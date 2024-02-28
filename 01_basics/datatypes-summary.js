@@ -30,3 +30,30 @@ const myFunction  = function (){
 //console.log(typeof myObj)
 
 //https://262.ecma-international.org/5.1/#sec-11.4.3
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++
+//Memory : Stack, Heap
+
+//Stack use in primitive datatype and Heap memory use in non-primitive
+//In Stack memory we get copy of variable, and in Heap we get reference of varible
+//In stack, whatever you change in varible it change in copy of varible only
+//In Heap, whatever you change in varible it change in original varible.  
+
+//Stack
+let myName = "Rashmikant";
+let anotherName = myName;
+anotherName ="Rashmi";
+//console.log(myName) //"Rashmikant"
+//console.log(anotherName) //"Rashmi"
+
+
+//Heap
+let userOne = {
+    name : "Rashmikant",
+    email : "rashmikant@mail.com"
+}
+let userTwo = userOne;
+userTwo.name = "rashmi";
+//console.log(userOne.name); //rashmi
+//console.log(userTwo.name); //rashmi
