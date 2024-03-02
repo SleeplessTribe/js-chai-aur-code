@@ -61,3 +61,19 @@ const {courseInstructor} =course
 const {courseInstructor: instructor} =course
 //console.log(instructor); //rashmi
  
+//API result
+//json
+/*{
+    "name" : "rashmikant",
+    "coursename" : "JS in hindi",
+    "price" : "free"
+}
+*/
+//Array of objects
+/*
+[
+    {},
+    {},
+    {}
+]
+*/
