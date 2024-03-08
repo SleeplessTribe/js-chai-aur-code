@@ -12,8 +12,9 @@
         }
         #inner-div{
             background-color: blue;
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
+            margin:auto;
         }
 
 
@@ -31,9 +32,9 @@
             <li><a href="https://google.com" id="google">Google</a></li>
         </ul>
     </div>
-    <div id="outer-div">
-        <div id="inside-div"></div>
-    </div>
+    <!--<div id="outer-div">
+        <div id="inner-div"></div>
+    </div>-->
 </body>
 <script>
     
@@ -49,21 +50,52 @@
     //attachEvent()
     //jQuery - on
 
-    document.getElementById('images').addEventListener('click', function(e){
+    /*document.getElementById('images').addEventListener('click', function(e){
         console.log('clicked inside the ul')
-    }, true);
+    }, false);
 
     document.getElementById('owl').addEventListener('click', function(e){
         console.log('owl clicked')
-    }, true);
+        e.stopPropagation() // don't allow bubling
+    }, false);
+    */
     //Event Propogation (bubling) -> default false
     //we have one div, inside that we have another div
     //we add Event listner to both div. if both event propogation 
     //is false than it first click on inner div than on outer div 
     //if outer div has event propogation true then 
     //it click on outer div than inside div
+    /*document.getElementById('outer-div').addEventListener('click', function(e){
+        console.log('outer div clicked')
+    })
+    document.getElementById('inner-div').addEventListener('click', function(e){
+        console.log('inner div clicked')
+    }, true)*/
 
-    document.getElementById('outer-div')
+    //capturing opposite of bubling
+
+    //e.stopPropagation() not allowing bubling and it allow only click on inner element
+
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('google clicked');
+    });
+   
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        //console.log(e.target.parentNode);
+        
+        //1st way to remove li tag
+        if(e.target.tagName == 'IMG'){
+            let removeIt = e.target.parentNode
+            removeIt.remove();
+        }
+
+        //2nd way to remove li tag
+        //removeIt.parentNode.removeChild(removeIt)
+
+    }, false)
 
 </script>
 </html>
