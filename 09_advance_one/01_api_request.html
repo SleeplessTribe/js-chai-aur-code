@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { text-align: center; }
+        .profile img {
+            height: 150px;
+            width: 150px;
+            border-radius: 75px;
+            margin-bottom: 10px;
+        }
+        #view-user{margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="profile"></div>
+    <button id="view-user">View User</button>
+</body>
+<script>
+    const viewUser = document.getElementById('view-user');
+
+    viewUser.addEventListener('click', function (e) {
+        const profile = document.querySelector('.profile')
+        profile.innerHTML = '';
+        const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', requestUrl);
+        xhr.onreadystatechange = function () {
+            console.log(xhr.readyState);
+            if (xhr.readyState === 4) {
+                const data = JSON.parse(this.responseText);
+                console.log(data)
+                const img = document.createElement('img');
+                img.setAttribute('src', data.avatar_url);
+                profile.appendChild(img)
+
+                const h2 = document.createElement('h2');
+                h2.textContent = `${data.name}`;
+                profile.appendChild(h2);
+
+                const p = document.createElement('p');
+                p.textContent= `followers: ${data.followers}`;
+                profile.appendChild(p)
+
+            }
+        }
+        xhr.send();
+    });
+
+
+
+</script>
+
+</html>
